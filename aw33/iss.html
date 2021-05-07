@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Our ISS page showing Current location for ISS and who is in space">
+        <title>ISS-Space Awareness</title>
+        <link rel="title icon" href="img/Icon_star.ico"/> 
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <span id="header-template"></span>
+            <script type="text/javascript">
+                InsertModule("header-template","header.html");
+            </script>
+        </header>
+        
+        <main>
+            <section >
+                <h1 class="pageheading">Space Awareness ISS page</h1>
+                <p>The International Space Station is a large spacecraft in orbit around Earth.
+                     It serves as a home where crews of astronauts and cosmonauts live. 
+                </p>
+                <p> <a href="https://www.nasa.gov/audience/forstudents/5-8/features/nasa-knows/what-is-the-iss-58.html" target="_blank" class="link">Read more about ISS</a></p>
+                <p> <a href="https://www.nasa.gov/mission_pages/station/main/index.html" target="_blank" class="link">ISS main page</a></p>
+                <div id="astronautinfo" class="astronaut_box">
+                    <script type="text/javascript">
+                        getAstronauts("astronautinfo");
+                    </script> 
+                </div>
+
+                <img src="img/PinClipart.com_astronaut-helmet-clipart_5340006.png" class="astro_img" onclick="showAstronauts('astronautinfo','astro_img')">
+                
+            </section>
+            
+            <section class="section_common">
+                <h2 >ISS current location</h2>
+                    <div id="iss" class="sectionapod" >
+                        <script type="text/javascript">
+                            issLocation("iss","apod_img");
+                        </script>
+                    </div>
+                    <div id="map">
+                    </div>
+            </section>
+            <div class="bottom"></div>
+
+           
+            
+        </main>
+
+        <footer class="footer">
+            <div id="launchmodal" class="launch-modal">
+                <!--Place holder for launch Modal-->
+            </div>
+            <div class="footer_heading">Upcomming Launches. Click to get more information</div>
+            <div id="launchlist" class="footer_section1">
+                <script type="text/javascript">
+                    launches("launchlist");
+                </script>     
+            </div>
+        </footer>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFn4frzi_D_rt5i0NXYgDvnAguOemOVCE">
+        </script>
+
+    </body>
+</html>
+
+
+

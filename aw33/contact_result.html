@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About-Space Awareness</title>
+        <link rel="title icon" href="img/Icon_star.ico"> 
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
+    </head>
+
+    <body>
+        <header> 
+            <span id="header-template"></span>
+            <script type="text/javascript">
+                InsertModule("header-template","header.html");
+              </script>
+        </header>
+        <main>
+
+            <section class="section_about">
+                <h1 class="pageheading">Space Awareness result page</h1>
+                <h2 class="about_h2">Our mission</h2>
+                <div class="about_text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, 
+                    sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in 
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, 
+                    sunt in culpa qui officia deserunt mollit anim id est laborum             
+                </div>
+            </section>
+
+            <section class="section_checkout_form">
+                <h2 class="checkout_h2">Please enter your request</h2>
+                <div id="FormOk" class="formOkerror"></div>
+                <form id="contactForm"  class="checkout_form">
+                    <section>
+                        <input type="text" id="Name" placeholder="Name (required)" class="checkout_form"/>
+                        <input type="text" id="Email" placeholder="Email (required)" class="checkout_form"/>
+                        <input type="number" id="Phone" placeholder="Phone" class="checkout_form"/>
+                        <textarea name="request" maxlength="100" id="request" placeholder="Your request (min 10 char required)" class="checkout_form"></textarea>
+                        <div id="requestError" class="formerror">Launch error! Plaese fill all required fields</div>
+                    </section>                    
+                    <div>
+                        <button type="submit" class="submit_button any_btn">Launch</button>
+                        <img id="launch" src="img/PinClipart.com_rocket-ship-clip-art_3012131.png" class="launch_img launch_img_move">
+                    </div>
+                </form>
+                <div class="launch_message">Your request has been launched to our contact center.
+                     We will reply you as soon as possible.
+                     <div class="button">
+                        <a class="button_link" href="index.html">Close</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom"></section>        
+           
+        </main>
+        
+        <footer class="footer">
+            <div id="launchmodal" class="launch-modal">
+                <!--Place holder for launch Modal-->
+            </div>
+            <div class="footer_heading">Upcomming Launches. Click to get more information</div>
+            <div id="launchlist" class="footer_section1">
+                <script type="text/javascript">
+                    launches("launchlist");
+                </script>     
+            </div>
+        </footer>
+    </body>
+</html>
+
+
+

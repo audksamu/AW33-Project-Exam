@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Our APOD page showing a new Astronomy picture every day">
+        <title>APOD-Space Awareness</title>
+        <link rel="title icon" href="img/Icon_star.ico"/> 
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <span id="header-template"></span>
+            <script type="text/javascript">
+                InsertModule("header-template","header.html");
+            </script>
+        </header>
+        
+        <main>
+            <section >
+                <h1 class="pageheading">Space Awareness APOD page</h1>
+                <p>One of the most popular websites at NASA is the Astronomy Picture of the Day. 
+                    APOD is a service from NASA showing a new astronomy picture every day  
+                </p>
+                <p> <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" class="link">Go to NASA's APOD page</a></p>
+                
+            </section>
+            <section class="section_common">
+                <h2 >Astronomy Picture of the Day</h2>
+                    <div id="apod1" class="sectionapod" >
+                        <script type="text/javascript">
+                            apodPicture("apod1","apod_img");
+                        </script>                   
+                    </div>
+            </section>
+            <div class="bottom"></div>
+
+           
+            
+        </main>
+
+        <footer class="footer">
+            <div id="launchmodal" class="launch-modal">
+                <!--Place holder for launch Modal-->
+            </div>
+            <div class="footer_heading">Upcomming Launches. Click to get more information</div>
+            <div id="launchlist" class="footer_section1">
+                <script type="text/javascript">
+                    launches("launchlist");
+                </script>     
+            </div>
+        </footer>
+    </body>
+</html>
+
+
+

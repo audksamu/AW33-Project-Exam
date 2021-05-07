@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="website focusing on NASA's space activity, with special focus on ice and March">
+        <meta name="keywords" content="NASA, Space exploration, ISS, MARS, launch, Astronaut, Kosmonaut, Ingenuity Mars Helicopter">
+        <meta name="author" content="Auds student">
+        <title>Space Awareness page to explore space activities</title>
+        <link rel="title icon" href="img/Icon_star.ico"> 
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/scripts.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <span id="header-template"></span>
+            <script type="text/javascript">
+                InsertModule("header-template","header.html");
+            </script>
+        </header>
+        
+        <main>
+            <section >
+                <h1 class="pageheading">Space Awareness home page</h1>
+                <p>This is the Space Awareness Home Page. This page is designed to provide information about ongoing space programs and give you more information about them</p>
+            </section>
+
+            <section class="section_common">
+                <a class="button_link" href="apod.html"><h2>Astronomy Picture of the Day</h2></a>
+                <p>APOD is a service from NASA showing a new astronomy picture every day</p>
+                <div id="apod1" class="sectionbox" >
+                    <script type="text/javascript">
+                        apodPicture("apod1","img_box");
+                    </script>                   
+                </div>
+                <div class="button">
+                    <a class="button_link" href="apod.html">More APOD</a>
+                </div>            
+            </section>
+
+            <div class="columnsection">
+                <section class="section_common section1">
+                    <a class="button_link" href="iss.html">
+                        <h2 >ISS</h2>
+                        <div class="columnbox">
+                            <img src="img/iss_5.jpg" alt="International Space Station" class="img_box">
+                        </div>
+                    </a>
+                    <div class="button">
+                        <a class="button_link" href="iss.html">More ISS</a>
+                    </div>            
+                </section>
+
+                <section class="section_common section2">
+                    <a class="button_link" href="mars.html">
+                        <h2>Mars</h2>
+                        <div class="columnbox">
+                            <img src="img/pia23491.jpg" alt="Mars 2020 Collecting Sample" class="img_box">
+                        </div>
+                    </a>
+                    <div class="button">
+                        <a class="button_link" href="mars.html">More Mars</a>
+                    </div>            
+                </section>
+            </div>
+            <section class="section_common">
+                <h2>For the youngest, NASA Space Place.</h2>
+                <p>Explore Earth and Space at Nasa Space Place, find fun games, hands-on activities,
+                    informative articles and engaging short videos. Here you can learn more about many 
+                    interesting topics like The mars Rovers, The Sun, our Solar System and much more.</p>
+                <div class="section_common">
+                    <a class="button_link" href="https://spaceplace.nasa.gov/" target="_blank">
+                    <img src="img/spaceplace-logo-small.en.png" alt="NASA Space Place" class="img_space_place">
+                    </a>
+                </div>
+            </section>
+            <div class="bottom"></div>
+        </main>
+
+        <footer class="footer">
+            <div id="launchmodal" class="launch-modal">
+                <!--Place holder for launch Modal-->
+            </div>
+            <div class="footer_heading">Upcoming Launches. Click below to get more information</div>
+            <div id="launchlist" class="footer_section1">
+                <script type="text/javascript">
+                    launches("launchlist");
+                </script>     
+            </div>
+        </footer>
+    </body>
+</html>
+
+
+

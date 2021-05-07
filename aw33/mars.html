@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Our Mars page showing Mars related content">
+        <title>Mars-Space Awareness</title>
+        <link rel="title icon" href="img/Icon_star.ico"/> 
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <span id="header-template"></span>
+            <script type="text/javascript">
+                InsertModule("header-template","header.html");
+            </script>
+        </header>
+        
+        <main>
+            <section class="section_common">
+                <h1 class="pageheading">Space Awareness Mars page</h1>
+                <h2>First helicopter flight on Mars</h2>
+                <a href="https://www.nasa.gov/press-release/nasa-ingenuity-mars-helicopter-prepares-for-first-flight" target="_blank" class="link">
+                    <img src="img/pia23720.jpg" class="img_small_right">
+                </a>
+                <div class="mars_text">
+                    <p>NASA is prepering the Ingenuity Mars Helicopter to make the first attempt at powered, controlled flight of an aircraft on another planet.</p>                           
+                    <p> <a href="https://www.nasa.gov/press-release/nasa-ingenuity-mars-helicopter-prepares-for-first-flight" target="_blank" class="link">Read more about Mars helicopter</a></p>
+                </div>
+            </section>
+
+            <section class="section_common">
+                <h2 >The sound of Mars</h2>
+                <!-- this iframe are embeded with code from Soundcloud -->
+                <iframe width="100%" height="300"  allow="autoplay" title="the sound of mars" 
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1009995931&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/nasa" title="NASA" target="_blank" style="color: #cccccc; text-decoration: none;">NASA</a> · <a href="https://soundcloud.com/nasa/sounds-of-perseverance-mars-rover-driving-sol-16-90-second-highlights" title="Sounds of Perseverance Mars Rover Driving – Sol 16 (90-second highlights)" 
+                    target="_blank" style="color: #cccccc; text-decoration: none;">
+                    Sounds of Perseverance Mars Rover Driving – Sol 16 (90-second highlights)
+                </a></div>
+            </section>
+
+            <section class="section_common">
+                <h2 >Launch to Mars </h2>
+                <video controls class="video" poster="./img/20200730_m2020_launch_wrap.jpg">
+                    <source src="./img/20200730_m2020_launch_wrap-640.m4v" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>                
+            </section>
+
+           
+            <div class="bottom"></div>
+        </main>
+
+        <footer class="footer">
+            <div id="launchmodal" class="launch-modal">
+                <!--Place holder for launch Modal-->
+            </div>
+            <div class="footer_heading">Upcomming Launches. Click to get more information</div>
+            <div id="launchlist" class="footer_section1">
+                <script type="text/javascript">
+                    launches("launchlist");
+                </script>     
+            </div>
+        </footer>
+    </body>
+</html>
+
+
+
