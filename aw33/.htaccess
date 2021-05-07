@@ -1,0 +1,4 @@
+#Rewrite everything to http
+RewriteEngine On
+RewriteCond %{HTTPS} =on
+RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
