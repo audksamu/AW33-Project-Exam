@@ -54,7 +54,6 @@ function menuClick(menuId,newMenuClass,menuClass,menuSource) {
       document.getElementById(openMenuId).classList.remove(showClass);
     }
   }
-  
   /*Toggle objekt on/off */
   document.getElementById(menuId).classList.toggle(newMenuClass);
 
@@ -64,7 +63,6 @@ function menuClick(menuId,newMenuClass,menuClass,menuSource) {
   openMenuClass = menuClass;
   openMenuSource = menuSource;
   showClass = newMenuClass;
-  
 }
 
 function removeMenu () {
@@ -87,88 +85,8 @@ function removeMenu () {
 }
 
 
-/*Function to show object with ID = formid. 
-If coordinates (x,y) and img are sent in it will be used to modify form content and placement */
-function formPopUp(formId,x,y,img) {
-  var wWidth = document.documentElement.clientWidth;
-  var wHeigth = document.documentElement.clientHeight;
-  
-  if (typeof img != "undefined") {
-    if (tempInnerHtml!="") {
-      document.getElementById(formId).innerHTML = tempInnerHtml;
-    }
-    tempInnerHtml = document.getElementById(formId).innerHTML;
-    document.getElementById(formId).innerHTML = `<img class="img_button" src="${img}" alt="picture of week offer"></img>${tempInnerHtml}`;
-  }
-
-  document.getElementById(formId).style.display = "block";
-  var yOfset = document.getElementById(formId).offsetHeight;
-  var xOfset = document.getElementById(formId).offsetWidth/2;
-  var xx = 0;
-
-  if (wWidth > 1024 ) {
-      xx=(wWidth-1024)/2;
-  }
-  if (x + xOfset >= wWidth) {
-        x = wWidth - (2 * xOfset) - 5;
-  }
-  else if (x - xOfset <= 0) {
-    x = 5;
-  }
-  else {
-     x = x - xOfset;
-  }
-
-  x=x-xx;
-
-  y = y- (yOfset);
-
-  document.getElementById(formId).style.left = x+"px";
-  document.getElementById(formId).style.top = y+"px";
-}
-
-/*function to close element with ID=formid*/
-function formClose(formId) {
-  document.getElementById(formId).style.display = "none";
-}
-
-/*function to close on submit */
-function submitClose(formId) {
-  document.getElementById(formId).innerHTML = storeInnerHtml;
-  document.getElementById(formId).style.display = "none";
-}
-
 function checkEmailFormat (email) {
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
-}
-
-
-/* function to check subscribe form on submit.
-If email adress OK then replace innerhtml with success message*/
-function subscribeSubmit() {
-  var formOk = true;
-
-  if  (!checkEmailFormat (document.forms["submitForm"]["email"].value)) {
-    document.getElementById("emailError").style.display = "block";
-    formOk = false;
-  }
-  else {
-      document.getElementById("emailError").style.display = "none";
-      storeInnerHtml = document.getElementById("subscribe").innerHTML;
-      var email = document.forms["submitForm"]["email"].value;
-      document.getElementById("subscribe").innerHTML = 
-      `<div class="subscribe_text">Thank you for subscribing. An email with discount code was sent to</div>
-      <div class="subscribe_text">${email}</div>
-      <button type="button" class="close_button" onclick="submitClose('subscribe')">Close</button>`
-  }
-    return formOk;
-}
-
-/*function to use in BuyNow buttons*/
-function buyNow(formId,event,img) {
-  var x = event.clientX;
-  var y = event.clientY;
-  formPopUp(formId,x,y,img);
 }
 
 /*Function to check input in checkout form */
@@ -199,35 +117,17 @@ function checkForm() {
   }
 }
 
-
-function launchRocket() {
-  var launchElement = document.getElementById("launch");
-  var LaunchElementStyle = window.getComputedStyle(launchElement,null);
-  origTop = launchElement.offsetTop;
-  function moveElement(x){
-     launchElement.style.top = Number(x) + "px";
-  }
-  for (i=0; i < 100; i++) {
-    setTimeout(moveElement(-i),1000);
-  }
-}
-
-
-
-
-
+/*Function for Astronomy picture of the day */
 async function apodPicture(id,idclass) {
     const apiResult = document.getElementById(id);
     apiResult.innerHTML = displayMessage("wait","Please\xa0wait");
     const url = apodBaseurl + "?" + nasaApikey;
-
+    /* isVideo variable is set to true if the result from API call is a video, and false if it is a image*/
     var isVideo = false;
     var tempApiResult = "";
-    
     try {
         const apiResponse = await fetch(url);
         const apodResult = await apiResponse.json();
-
         if (idclass==="apod_img") {
           var tempApiResult = `<a href="${apodResult.hdurl}" target="_blank">
           `;
@@ -239,7 +139,7 @@ async function apodPicture(id,idclass) {
         }
 
         if (apodResult.media_type=="video") {
-          isVideo = true;
+          isVideo = true; /* set to true if video */
           tempApiResult = tempApiResult + `
             <iframe width="100%" src="${apodResult.url}" 
             frameborder="0" allowfullscreen></iframe>
@@ -252,16 +152,15 @@ async function apodPicture(id,idclass) {
           </a>  
           `;
         }
-
         if (idclass==="apod_img") {          
           tempApiResult = tempApiResult + `
           <div class="apod_txt">
             <h3>${apodResult.title}</h3>
             <div class="apod_copy">Copyright:${apodResult.copyright}</div>
             <div class="apod_copy">Date: ${apodResult.date}</div>
-            <div class="apod_scroll">${apodResult.explanation}
-          
+            <div class="apod_scroll">${apodResult.explanation}          
           `
+          /*InnerHTML wil need different depending on if it is a video or an image*/
           if (isVideo===true){
             tempApiResult = tempApiResult + `
             </div>
@@ -274,17 +173,15 @@ async function apodPicture(id,idclass) {
             </div>
             ` 
           }  
-
         }
-        
         apiResult.innerHTML=tempApiResult;
     }
     catch (error) {
         apiResult.innerHTML=displayMessage("apierror","An error occured: <br>"+error);
     } 
-
 }
 
+/*Building google map for use in ISS location map */
 let map;
       function initMap(latitude,longitude) {
         map = new google.maps.Map(document.getElementById("map"), {
@@ -301,65 +198,56 @@ let map;
         });
       }
 
+
+/* function with API call to get location for ISS */
 async function issLocation(id,idclass) {
   var location = { lat: 40, lng: 20 };
-
   const apiResult = document.getElementById(id);
   apiResult.innerHTML = displayMessage("wait","Please\xa0wait");
   const url = "http://api.open-notify.org/iss-now.json";
   var tempApiResult = "";
-  
   try {
       const apiResponse = await fetch(url);
       const issResult = await apiResponse.json();
-      console.log(issResult);
       location.lat = parseInt(issResult.iss_position.latitude);
       location.lng = parseInt(issResult.iss_position.longitude);
-      console.log (location);
-      
       var tempApiResult = `
       <div class="iss_map_txt">
          <div>Latitude:${issResult.iss_position.latitude} Longitude: ${issResult.iss_position.longitude}</div>
          <div>The map shows the current location of the Intrnational space station.</div>
       </div>
       `;
-      
       apiResult.innerHTML=tempApiResult; 
       initMap(location.lat,location.lng);     
   }
   catch (error) {
       apiResult.innerHTML=displayMessage("apierror","An error occured: <br>"+error);
   } 
-
-  
-
 }
 
-
+/* Function with API call to get list of Astronauts in space 
+   The function building InnerHTML based on data from API call*/
 async function getAstronauts(id){
   const url = "http://api.open-notify.org/astros.json";
-  
   const apiResult = document.getElementById(id);
   var tempApiResult = "";
   try {
     const apiResponse = await fetch(url);
     const astronautResult = await apiResponse.json();
-    console.log(astronautResult);
     tempApiResult=`
     <div>Currently there is ${astronautResult.number} astronauts in space</div>
     `
     for (i=0; i<astronautResult.number; i++){
       tempApiResult=tempApiResult + `<div>Craft: ${astronautResult.people[i].craft} Name: ${astronautResult.people[i].name}</div>`
-
     }
     apiResult.innerHTML=tempApiResult;
-    
   }
   catch (error) {
     apiResult.innerHTML=displayMessage("apierror","An error occured: <br>"+error);
   }  
 }
 
+/* Function to show/hide element with list of astronauts*/
 function showAstronauts(id,showClass){
   const element = document.getElementById(id);
   if (element.style.display !== "block") {
@@ -374,28 +262,29 @@ function showAstronauts(id,showClass){
   }
 }
 
+/* Function to close modal opened when user clicks on footer */
 function closeModal() {
   var launchModal = document.getElementById("launchmodal");
   launchModal.style.display = "none";
 }
 
+
+/* Function with API call to get information about upcoming launches.
+   This function has two features. 
+   1 : build list of next 10 launches and display it in footer
+   2: Get details about specific launch when user clicks on the footer */
 async function launches(id,launchId) {
-  console.log("Inside function launches");
-  console.log(launchId);
   var url = "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/";
   if (launchId != undefined) {
     url = url + launchId +"/";
   }
-  console.log("ID = "+id);
   const apiResult = document.getElementById(id);
   apiResult.innerHTML = displayMessage("wait","Please\xa0wait");
-  console.log(apiResult);
   var tempApiResult = "";
   try {
     const apiResponse = await fetch(url);
     const launchResult = await apiResponse.json();
-    console.log(launchResult);
-
+    /* If function called with id=launchlist, create list of upcoming launches*/
     if (id==="launchlist") {
       tempApiResult=`<div class="footer_section1">`
       for (var i=0; i<launchResult.results.length; i++) {
@@ -409,8 +298,9 @@ async function launches(id,launchId) {
       }      
       tempApiResult=tempApiResult+`</div>`;      
     }
-    else if (id==="launchmodal") {
-      console.log("Inside launchmodal")
+    else 
+    /* If function called with id=launchmodal, create and display modal with details for specified launch*/
+    if (id==="launchmodal") {
       tempApiResult=tempApiResult+`
       <div class="launch-modal-content">
         <button onclick="closeModal()">Close</button>
@@ -442,6 +332,7 @@ async function launches(id,launchId) {
   }  
 }
 
+/* Function called when user clicks a launch instanse in the footer */
 function showLaunch(LaunchId) {
   launches("launchmodal",LaunchId); 
   var launchModal = document.getElementById("launchmodal");
@@ -450,5 +341,3 @@ function showLaunch(LaunchId) {
 
 /* When new page opened, remove menu if open*/
 removeMenu();
-
-
