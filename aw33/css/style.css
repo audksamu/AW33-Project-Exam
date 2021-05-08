@@ -187,6 +187,14 @@ p {
     display: block;
 }
 
+.navmenu {
+    display: none;
+    border-bottom: 0.1em solid black;
+    text-align: right;
+    padding-right:0.5em;
+    margin:0;
+}
+
 ul {
     padding: 0;
 }
@@ -532,7 +540,7 @@ li>a:hover{
 
 /*for desktop screen minimum 500px*/
 @media only screen and (min-width: 500px) {
-    .astro_img{
+    .astro_img {
         width: 8%;
         margin-right: 2.2em;
     }
@@ -544,7 +552,7 @@ li>a:hover{
         display: none;
     }
 
-    .navmenu{
+    .navmenu {
         display: block;
         position: fixed;
         top: 1em;
@@ -553,11 +561,11 @@ li>a:hover{
         background-color: inherit;
     }
 
-    .list1{
+    .list1 {
         display: inline; 
     }
 
-    .firstfooterbox{
+    .firstfooterbox {
             animation: footermove 20s linear infinite;      
     }
 
@@ -565,7 +573,7 @@ li>a:hover{
         font-size: 1.5em;
     }
 
-    .footerbox{
+    .footerbox {
         height: 3em;
         font-size: 1.2em;
     }  
@@ -574,7 +582,7 @@ li>a:hover{
         width: 320em;
     }    
 
-    .astro_img{
+    .astro_img {
         width: 63px;
         margin-right: 2.2em;
     }     

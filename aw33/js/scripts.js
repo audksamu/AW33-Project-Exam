@@ -19,6 +19,7 @@ var tempInnerHtml = "";
 const apodBaseurl = "https://api.nasa.gov/planetary/apod/";
 const nasaApikey = "api_key=AeYR7Zhnyd52Vcv92DlLSXM6z3S4UJLySw7pgafb";
 var launchModal = document.getElementById("launchmodal");
+var openModal = "";
 
 /*Global Varaibales End*/
 
@@ -66,24 +67,32 @@ function menuClick(menuId,newMenuClass,menuClass,menuSource) {
 }
 
 function removeMenu () {
-  /* function to remove menu when clicket outside menu*/
+  /* function to remove menu and other popup element when clicket outside them*/
   window.onclick = function(event) {
-    if (openMenuId != "") {
+    /* close menu */
+    if (openMenuId != "") { 
       if (!(event.target.matches('.'+openMenuClass) || event.target.matches('.'+openMenuSource) || event.target.matches('.'+openMenuProtect) ) ) {
         if (document.getElementById(openMenuId).classList.contains(showClass)) {
           document.getElementById(openMenuId).classList.remove(showClass);
         }
       } 
     }
+    /* close astronaut box */
     if (openBoxId != "") {
       if (!(event.target.matches('img.'+openBoxImg))) {
         document.getElementById(openBoxId).style = "none";
         openBoxId = "";
       }
     }
+    /* close Launch modal */
+    if (openModal !="") {
+      if (!(event.target.matches(`.footerbox`))) {
+        document.getElementById("launchmodal").style.display = "none";
+        openModal = "";
+      }
+    }
   }
 }
-
 
 function checkEmailFormat (email) {
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
@@ -335,8 +344,9 @@ async function launches(id,launchId) {
 /* Function called when user clicks a launch instanse in the footer */
 function showLaunch(LaunchId) {
   launches("launchmodal",LaunchId); 
-  var launchModal = document.getElementById("launchmodal");
+  launchModal = document.getElementById("launchmodal");
   launchModal.style.display = "block";
+  openModal = "launchmodal";
 }
 
 /* When new page opened, remove menu if open*/
